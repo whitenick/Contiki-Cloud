@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import SocketServer
 
 class TCPHandler(SocketServer.BaseRequestHandler):
@@ -13,4 +15,3 @@ if __name__ == "__main__":
 
     # Activate server: run until interrupted by keyboard
     server.serve_forever()
-
