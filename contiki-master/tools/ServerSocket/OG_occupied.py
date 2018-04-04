@@ -5,7 +5,7 @@ import requests
 
 url = 'http://kavzoh.pythonanywhere.com/senior_des/database_page?'
 passkey = 'b9c4t5tac1+'
-data = 'Tim+321+false'
+data = 'Nick+2202+true'
 
 ser = serial.Serial(
 	port='/dev/ttyACM0',\
@@ -13,22 +13,20 @@ ser = serial.Serial(
 	parity=serial.PARITY_NONE,\
 	stopbits=serial.STOPBITS_ONE,\
 	bytesize=serial.EIGHTBITS,\
-	timeout=0)
+	timeout=None)
 print("connected to: " + ser.portstr)
 ser.write("help\n")
 temp = ""
 response = ""
-while True:
+x = 8
+while (x < 10):
+	ser.flush()
 	line = ser.readline()
 	if line:
-		response = urlopen(url+passkey+data)
-		req = urllib2.Request(url=url+passkey, data=data)
-		second_response = urlopen(req)
-		print(second_response.read())
-		print(r.content) 
-		print(line)
+		response = urlopen(url+passkey+line)
+		print(line),
 		print(response.read())
-		
+	x =+ 1		
 ser.close()
 
 #Authentication (Unnecessary now - i unencrypted the server)
