@@ -3,7 +3,7 @@ import urllib2
 import serial
 import requests
 
-url = 'http://kavzoh.pythonanywhere.com/senior_des/database_page?'
+url = 'http://karan41.pythonanywhere.com/senior_des/database_page?'
 passkey = 'b9c4t5tac1+'
 data = 'Nick+2202+true'
 
