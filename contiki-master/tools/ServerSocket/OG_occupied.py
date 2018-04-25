@@ -3,6 +3,7 @@ import urllib2
 import serial
 import requests
 
+
 url = 'http://karan41.pythonanywhere.com/senior_des/database_page?'
 passkey = 'b9c4t5tac1+'
 data = 'Nick+2202+true'
@@ -16,17 +17,22 @@ ser = serial.Serial(
 	timeout=None)
 print("connected to: " + ser.portstr)
 ser.write("help\n")
-temp = ""
-response = ""
-x = 8
-while (x < 10):
+message_count = 0
+message_id = []
+while (True):
 	ser.flush()
 	line = ser.readline()
+	lines = line.split("+")
+	print(lines)
+	if len(lines) == 3:
+		line = lines[0]+"+"+lines[2]
 	if line:
+#line = lines[0]+"+"+lines[1]+"+"+lines[3]
+		message_count += 1
+		print(message_count)
 		response = urlopen(url+passkey+line)
 		print(line),
-		print(response.read())
-	x =+ 1		
+		print(response.read())		
 ser.close()
 
 #Authentication (Unnecessary now - i unencrypted the server)
